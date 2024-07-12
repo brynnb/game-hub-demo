@@ -1,9 +1,8 @@
 import axios from "axios";
 
 export default axios.create({
-  // Update the baseURL to use the local proxy endpoint
   baseURL: "/api",
   params: {
-    key: "",
+    key: import.meta.env.VITE_API_KEY, // Access the API key from environment variable
   },
 });
