@@ -6,6 +6,13 @@ export interface Game {
   id: number;
   name: string;
   background_image: string;
+  parent_platforms: { platform: Platform }[];
+}
+
+export interface Platform {
+  id: number;
+  name: string;
+  slug: string;
 }
 
 interface FetchGamesResponse {
@@ -32,7 +39,7 @@ const useGames = () => {
         setError(error.message);
       });
 
-    // return () => controller.abort();
+    // return () => controller.abort(); //TODO: this is causing no additional render after first one aborts in dev env
   }, []);
 
   return { games, error };
