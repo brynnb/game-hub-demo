@@ -1,4 +1,11 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
+
+export interface FetchResponse<T> {
+  count: number;
+  next: string;
+  previous: string;
+  results: T[];
+}
 
 const axiosInstance = axios.create({
   baseURL: "/api",
@@ -14,8 +21,10 @@ class APIClient<T> {
     this.endpoint = endpoint;
   }
 
-  getAll = () => {
-    return axiosInstance.get<T[]>(this.endpoint).then((res) => res.data);
+  getAll = (config: AxiosRequestConfig) => {
+    return axiosInstance
+      .get<FetchResponse<T>>(this.endpoint, config)
+      .then((res) => res.data);
   };
 }
 
