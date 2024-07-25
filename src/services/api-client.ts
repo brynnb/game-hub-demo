@@ -2,13 +2,15 @@ import axios, { AxiosRequestConfig } from "axios";
 
 export interface FetchResponse<T> {
   count: number;
+  next: string;
+  previous: string;
   results: T[];
 }
 
 const axiosInstance = axios.create({
   baseURL: "/api",
   params: {
-    key: import.meta.env.VITE_API_KEY,
+    key: import.meta.env.VITE_API_KEY, // Access the API key from environment variable
   },
 });
 
