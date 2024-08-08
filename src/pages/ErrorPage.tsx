@@ -10,7 +10,7 @@ const ErrorPage = () => {
     <>
       <NavBar />
       <Box padding={5}>
-        <Heading>Opps</Heading>
+        <Heading>Oops</Heading>
         <Text>
           {isRouteErrorResponse(error) ? "Invalid page" : "Unexpected Error"}
         </Text>
